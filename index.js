@@ -197,8 +197,7 @@ code.moveSubtree = function (type, nodeCode, toNodeCode, way) {
   //要做为某个节点的子节点移入，这个节点的子节点必须为空。如果不空，需要用节点前或后的方式
   if (nodeCode > 0 && toNodeCode > 0
     && codesType && codesType[nodeCode] && codesType[toNodeCode]
-    && (way === code.SON || way === code.AFTER || way === code.BEFORE)
-    && (way !== code.SON || codesType[toNodeCode].children.length < 1)) {
+    && (way === code.SON || way === code.AFTER || way === code.BEFORE)) {
     //从原父节点断开
     let fatherCode = codesType[nodeCode].fid;
     if (fatherCode > -1) {
@@ -241,8 +240,7 @@ code.copySubtree = function (type, nodeCode, toNodeCode, way) {
   //要做为某个节点的子节点移入，这个节点的子节点必须为空。如果不空，需要用节点前或后的方式
   if (nodeCode > 0 && toNodeCode > 0
     && codesType && codesType[nodeCode] && codesType[toNodeCode]
-    && (way === code.SON || way === code.AFTER || way === code.BEFORE)
-    && (way !== code.SON || codesType[toNodeCode].children.length < 1)) {
+    && (way === code.SON || way === code.AFTER || way === code.BEFORE)) {
     let copy = function (from, fid) {
       codesType[0].idcount++;
       let to = {};
@@ -306,8 +304,7 @@ code.changeSubtreeDisabledValue = function (type, nodeCode, disabled) {
 code.addSubtree = function (type, labelList, toNodeCode, way) {
   let result = false;
   if (codes[type + 'Arr'] && codes[type + 'Arr'][toNodeCode]
-    && (way === code.SON || way === code.AFTER || way === code.BEFORE)
-    && (way !== code.SON || codes[type + 'Arr'][toNodeCode].children.length < 1)) {
+    && (way === code.SON || way === code.AFTER || way === code.BEFORE)) {
     let node = codes[type + 'Arr'][toNodeCode];
     let newNodes = [];
     labelList.forEach(label => {
