@@ -141,6 +141,14 @@ code.code2codes = function (type, nodeCode) {
   return single;
 };
 
+code.code2childrenCode = function(type, nodeCode){
+  let result = [];
+  let sons = codes[type + 'Arr'][nodeCode].children;
+  sons.forEach(son => {
+    result.push(son.id);
+  });
+};
+
 code.sort = function (type, c1, c2) {
   let result = 0;
   let len1 = c1.length;
