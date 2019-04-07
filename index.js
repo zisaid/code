@@ -147,6 +147,7 @@ code.code2childrenCode = function(type, nodeCode){
   sons.forEach(son => {
     result.push(son.id);
   });
+  return result;
 };
 
 code.sort = function (type, c1, c2) {
