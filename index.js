@@ -311,6 +311,7 @@ code.changeSubtreeDisabledValue = function (type, nodeCode, disabled) {
 };
 
 code.addSubtree = function (type, labelList, toNodeCode, way) {
+  let newCode = [];
   let result = false;
   if (codes[type + 'Arr'] && codes[type + 'Arr'][toNodeCode]
     && (way === code.SON || way === code.AFTER || way === code.BEFORE)) {
@@ -323,6 +324,7 @@ code.addSubtree = function (type, labelList, toNodeCode, way) {
       newNodes.forEach(newNode => {
         codes[type + 'Arr'][0].idcount++;
         newNode.id = codes[type + 'Arr'][0].idcount;
+        newCode.push(newNode.id);
         newNode.fid = node.id;
         node.children.push(newNode);
         codes[type + 'Arr'][newNode.id] = newNode;
@@ -344,6 +346,7 @@ code.addSubtree = function (type, labelList, toNodeCode, way) {
           newNodes.forEach(newNode => {
             codes[type + 'Arr'][0].idcount++;
             newNode.id = codes[type + 'Arr'][0].idcount;
+            newCode.push(newNode.id);
             newNode.fid = node.fid;
             codes[type + 'Arr'][newNode.id] = newNode;
           });
@@ -355,7 +358,7 @@ code.addSubtree = function (type, labelList, toNodeCode, way) {
     }
   }
   if (result) result = codes[type];
-  return result;
+  return [newCode,result];
 };
 
 module.exports = code;
