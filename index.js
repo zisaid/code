@@ -125,6 +125,12 @@ code.labels2code = function (type, labelList) {
   return result;
 };
 
+/**
+ * 从根代码到当前代码
+ * @param type
+ * @param nodeCode
+ * @returns {*[]}
+ */
 code.code2codes = function (type, nodeCode) {
   let item = codes[type + 'Arr'][nodeCode];
   let single = [nodeCode];
@@ -149,6 +155,15 @@ code.code2childrenCode = function(type, nodeCode){
   });
   return result;
 };
+
+code.code2allChildrenCode = function(type, nodeCode){
+  let son = code.code2childrenCode(type, nodeCode);
+  let grandson = [];
+  son.forEach(each => {
+    grandson.concat(code.code2allChildrenCode(type, each));
+  });
+  return son.concat(grandson);
+}
 
 code.sort = function (type, c1, c2) {
   let result = 0;
