@@ -65,6 +65,10 @@ code.getCode = function (type) {
   return codes[type];
 };
 
+code.getSubtree = function(type, nodeCode){
+  return codes[type + 'Arr'][nodeCode];
+};
+
 /**
  * 代码转标签
  * @param type
