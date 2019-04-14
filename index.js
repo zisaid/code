@@ -167,7 +167,7 @@ code.code2allChildrenCode = function(type, nodeCode){
     grandson.concat(code.code2allChildrenCode(type, each));
   });
   return son.concat(grandson);
-}
+};
 
 code.sort = function (type, c1, c2) {
   let result = 0;
