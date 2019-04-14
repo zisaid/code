@@ -219,6 +219,17 @@ code.modifyLabel = function (type, nodeCode, label) {
   return result;
 };
 
+code.modifyMoreInfoJson = function (type, nodeCode, moreInfoJson) {
+  let result = false;
+  if (nodeCode > 0 && codes[type + 'Arr'] && codes[type + 'Arr'][nodeCode]) {
+    codes[type + 'Arr'][nodeCode].moreInfoJson = moreInfoJson;
+    code.save(type);
+    result = true;
+  }
+  if (result) result = codes[type];
+  return result;
+};
+
 code.moveSubtree = function (type, nodeCode, toNodeCode, way) {
   let result = false;
   let codesType = codes[type + 'Arr'];
