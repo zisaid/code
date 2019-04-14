@@ -277,6 +277,9 @@ code.copySubtree = function (type, nodeCode, toNodeCode, way) {
       to.disabled = false;
       to.label = from.label;
       to.children = [];
+      if('moreInfoJson' in from){
+        to.moreInfoJson = from.moreInfoJson;
+      }
       from.children.forEach(son => {
         let sonNode = copy(son, to.id);
         to.children.push(sonNode);
